@@ -1,0 +1,42 @@
+
+This query is used to determine the 10 countries with the most Rockbuster customers. In order to create the query several inner joins are necessary to link the customer table to the 
+country table. 
+
+ SELECT D.country, COUNT(A.customer_id) AS customer_count
+   FROM customer A
+  INNER JOIN address B ON A.address_id = B.address_id
+  INNER JOIN city C ON B.city_id = C.city_id
+  INNER JOIN country D ON C.country_id=D.country_id
+  GROUP BY D.country
+  ORDER BY customer_count DESC
+  LIMIT 10;
+
+This query uses the results from the previous query to give the top 10 cities by customer count for Rockbuster within the top 10 countries. Again, several inner joins are 
+used to join the customer table to the city table. A WHERE clause is used to specify which countries to include the query. 
+
+ SELECT C.city, COUNT(A.customer_id) AS customer_count
+   FROM customer A
+  INNER JOIN address B ON A.address_id = B.address_id
+  INNER JOIN city C ON B.city_id = C.city_id
+  INNER JOIN country D ON C.country_id=D.country_id
+  WHERE D.country IN ('India', 'China', 'United States', 'Japan', 'Mexico', 'Brazil','Russian Federation', 'Philippines', 
+                      'Turkey', 'Indonesia')
+  GROUP BY C.city
+  ORDER BY customer_count DESC
+  LIMIT 10;
+
+This query used the results from the previous query to give the top 5 customers by total spend from within the top 10 cities. Again, several inner joins and a WHERE clause are used. 
+
+ SELECT C.customer_id, C.first_name, C.last_name, F.country, E.city, SUM(A.amount) AS total_amount_paid
+   FROM payment A
+  INNER JOIN rental B ON A.rental_id = B.rental_id
+  INNER JOIN customer C ON B.customer_id = C.customer_id
+  INNER JOIN address D ON C.address_id = D.address_id
+  INNER JOIN city E ON D.city_id = E.city_id
+  INNER JOIN country F ON E.country_id = F.country_id
+  WHERE E.city IN ('Aurora', 'Shimoga', 'Aparecida de Goinia', 'Emeishan', 'Pontianak', 'Tarsus', 'Atlixco', 
+                   'Zalantun', 'Rio Claro', 'Tokat')
+  GROUP BY C.customer_id, F.country, E.city
+  ORDER BY total_amount_paid DESC
+  LIMIT 5;
+
