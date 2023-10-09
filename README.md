@@ -16,4 +16,4 @@ A collection of SQL queries created to analyze fictional move rental service Roc
 - Tableau
 
 ## Presentation Visualizations
-- The Tableau visualizations created for the final presentation can be found at this link: [Rockbuster Analysis Visualizations]([https://pages.github.com/](https://public.tableau.com/views/RockbusterAnalysisVisualizations/RevenuebyRegion?:language=en-US&:display_count=n&:origin=viz_share_link)https://public.tableau.com/views/RockbusterAnalysisVisualizations/RevenuebyRegion?:language=en-US&:display_count=n&:origin=viz_share_link).
+- The Tableau visualizations created for the final presentation can be found at this link: [Rockbuster Analysis Visualizations](https://public.tableau.com/views/RockbusterAnalysisVisualizations/CustomerCountbyRegion?:language=en-US&:display_count=n&:origin=viz_share_link). 
