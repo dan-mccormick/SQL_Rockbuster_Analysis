@@ -1,15 +1,15 @@
 
-This query is used to find minimum, maximum, and average actual rental durations (by taking (return date-rental date) for each rental There is a subquery used to get the film_id and title for each movie, and to calculate the rental duration by taking the rental return date minus the rental date. Then in the outer query the maximum, minimum, and average of the values from the subquery are found. 
+This query is used to find minimum, maximum, and average actual rental durations (by taking (return date-rental date) 
+for each rental There is a subquery used to get the film_id and title for each movie, and to calculate the rental duration 
+by taking the rental return date minus the rental date. Then in the outer query the maximum, minimum, and average of the values 
+from the subquery are found. 
 
-SELECT MAX(film_duration_table.rental_duration) AS max_duration,    
-              MIN(film_duration_table.rental_duration)
-              AS min_duration, AVG(film_duration_table.rental_duration) as avg_duration
+SELECT MAX(film_duration_table.rental_duration) AS max_duration. MIN(film_duration_table.rental_duration)
+       AS min_duration, AVG(film_duration_table.rental_duration) as avg_duration
   FROM film A
   JOIN (SELECT C.film_id, C.title, (A.return_date-A.rental_date) AS rental_duration
-              FROM rental A
-                JOIN inventory B 
-                  ON A.inventory_id=B.inventory_id
-                JOIN film C
-                  ON B.film_id = C.film_id) AS film_duration_table ON   
- A.film_id=film_duration_table.film_id;
+          FROM rental A
+          JOIN inventory B 
+            ON A.inventory_id=B.inventory_id
+          JOIN film C ON B.film_id = C.film_id) AS film_duration_table ON A.film_id=film_duration_table.film_id;
 
