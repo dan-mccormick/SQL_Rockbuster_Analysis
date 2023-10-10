@@ -8,7 +8,8 @@ A collection of SQL queries created to analyze fictional move rental service Roc
 - The analysis will also include leveraging Tableau to create a visual presentation on key findings. 
 
 ## Data 
-- Rockbuster's database which contains information about the company's film inventory, customers, and payments, among other things
+- Rockbuster's database (provided by Careerfoundry fo the purposes of this project) which contains information about the company's film inventory,
+  customers, and payments, among other things
 
 ## Tools 
 - PostgreSQL relational database management system
